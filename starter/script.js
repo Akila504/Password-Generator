@@ -93,17 +93,16 @@ var upperCasedCharacters = [
 function initialNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
 //let's create a mega array  
 var character = []
-
 //let's create a password variable 
 var password = []
+var passLength;
 
 // Function to prompt user for password options
 function getPasswordOptions() {
   // Prompt for password length 
-  const passLength = parseInt(prompt("Please choose a password length between 8 and 128 characters"))
+  passLength = parseInt(prompt("Please choose a password length between 8 and 128 characters"))
   if (passLength < 8) {
     alert("password length can't be less than 8")
     return getPasswordOptions
@@ -144,7 +143,6 @@ function getPasswordOptions() {
     var firstChar = initialNumber(0, numericCharacters.length)
     firstChar = numericCharacters[firstChar]
     password.push(firstChar)
-    alert(password)
     character = numericCharacters.concat(character)
   }
 
@@ -164,40 +162,45 @@ function getPasswordOptions() {
 
   console.log(character)
   console.log(password)
+  console.log(character)
+
 }
-
-// Once character sets are selected, move on to generating random characters
-
 
 getPasswordOptions()
 
 
-console.log([password])
-// Function for getting a random element from an array
-function getRandom(arr) {
-  // Need a variable to hold the password as it's being generated
-  // Need a variable to hold the index that's being generated
+// Function for getting a random element from an array  
+// Need a variable to hold the password as it's being generated 
+// Need a variable to hold the index that's being generated 
 
-  // For loop that loops the number of times that matches the length the user chose
-  // Generate a random number
-  // That number is the index for a character in the mega-array
-  // So then, mega-array[generated-index] is the actual character
-  // Add that character to the password
+// For loop that loops the number of times that matches the length the user chose 
+// Generate a random number
+// That number is the index for a character in the mega-array
+// So then, mega-array[generated-index] is the actual character
+// Add that character to the password 
 
-  // Once we finish the for loop, return the generated password
+// Once we finish the for loop, return the generated password
+
+console.log(password.length)
+
+
+function getRandom() {
+  for (let i = password.length; i < passLength; i++) {
+    var megaIndex = initialNumber(0, character.length);
+    var char = character[megaIndex]
+    password.push(char)
+  }
+  return password.join('')
+
 }
 
-// Function to generate password with user input
-function generatePassword() {
-
-}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  var password = getRandom();
   var passwordText = document.querySelector('#password');
 
   passwordText.value = password;
@@ -205,9 +208,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
-
-
-const charOptions = [];
-const generatedPassword = '';
-// You can store the generatedPassword as a string and concat each character OR
-// as an array and push each character, then join once you have enough characters
