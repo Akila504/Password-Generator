@@ -89,13 +89,25 @@ var upperCasedCharacters = [
 ];
 
 
+//lets create a function that randomly generates between a random number betwen 2 numbers 
+function initialNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+//let's create a mega array  
+var character = []
+
+//let's create a password variable 
+var password = []
+
 // Function to prompt user for password options
 function getPasswordOptions() {
   // Prompt for password length 
   // At least 8 characters, no more than 128 characters 
   const passLength = parseInt(prompt("Please choose a password length between 8 and 128 characters"))
   // Conditional to check that the number that was entered is in range   
-
+  // Prompts store data as strings, so need to parse into a number
+  // If the user's input is out of range, either return out of the function or call the function again
   if (passLength < 8) {
     alert("password length can't be less than 8")
     return getPasswordOptions
@@ -106,22 +118,63 @@ function getPasswordOptions() {
     return getPasswordOptions()
   }
 
+  const SpecialPrompt = prompt("do you want special Character in your password ? Answer true or false")
+  const NumericPrompt = prompt("do you want Numeric Character in your password ? Answer true or false")
+  const LowerPrompt = prompt("do you want lower Case Character in your password ? Answer true or false")
+  const UpperPrompt = prompt("do you want upper case Character in your password ? Answer true or false")
 
-  // Prompts store data as strings, so need to parse into a number
-  // If the user's input is out of range, either return out of the function or call the function again
+  // Confirm which character sets to use 
+  // If the user answers false for all, either return out of the function or call the function again 
 
-  // Confirm which character sets to use
-  // If the user answers false for all, either return out of the function or call the function again
+
 
   // Once they select a character set:
   // Generate a random character for each selected character set
   // Either push selected character sets to a mega-array of all selected characters
   // OR you can keep the arrays separate and generate a random number to select the array and another to select the index
 
+  if ((SpecialPrompt).toUpperCase = "TRUE") {
+    var firstChar = initialNumber(0, specialCharacters.length)
+    firstChar = specialCharacters[firstChar]
+    password.push(firstChar)
+    character = specialCharacters.concat(character)
+    console.log(character)
+  }
+
+  if ((NumericPrompt).toUpperCase = "TRUE") {
+    var firstChar = initialNumber(0, numericCharacters.length)
+    firstChar = numericCharacters[firstChar]
+    password.push(firstChar)
+    alert(password)
+    character = numericCharacters.concat(character)
+    console.log(character)
+  }
+
+  if ((LowerPrompt).toUpperCase = "TRUE") {
+    var firstChar = initialNumber(0, lowerCasedCharacters.length)
+    firstChar = lowerCasedCharacters[firstChar]
+    password.push(firstChar)
+    alert(password)
+    character = lowerCasedCharacters.concat(character)
+    console.log(character)
+  }
+
+  if ((UpperPrompt).toUpperCase = "TRUE") {
+    var firstChar = initialNumber(0, upperCasedCharacters.length)
+    firstChar = upperCasedCharacters[firstChar]
+    password.push(firstChar)
+    alert(password)
+    character = upperCasedCharacters.concat(character)
+    console.log(character)
+  }
+
   // Once character sets are selected, move on to generating random characters
 }
 
 getPasswordOptions()
+
+
+console.log([password])
 // Function for getting a random element from an array
 function getRandom(arr) {
   // Need a variable to hold the password as it's being generated
