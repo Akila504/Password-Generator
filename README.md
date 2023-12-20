@@ -17,7 +17,7 @@ https://akila504.github.io/Password-Generator/
 
 
 
-![the website should look like this](asset/images/Screenshot.jpeg)
+![the website should look like this](Asset/images/Screenshot.jpeg)
 
 
 ## Credits
