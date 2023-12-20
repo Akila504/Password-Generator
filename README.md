@@ -15,6 +15,8 @@ N/A
 To see the completed website please visit : 
 https://akila504.github.io/Password-Generator/
 
+
+
 ![the website should look like this](asset/images/Screenshot.jpeg)
 
 
